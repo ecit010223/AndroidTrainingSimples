@@ -17,15 +17,14 @@ import com.zhouwei.androidtrainingsimples.R;
 
 public class BottomTabLayoutActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
-    private Fragment []mFragmensts;
+    private Fragment[] mFragmensts;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bottom_tab_layout_ac);
         mFragmensts = DataGenerator.getFragments("TabLayout Tab");
-
         initView();
-
     }
 
     private void initView() {
@@ -36,42 +35,36 @@ public class BottomTabLayoutActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 onTabItemSelected(tab.getPosition());
 
-               for (int i=0;i<mTabLayout.getTabCount();i++){
-                   View view = mTabLayout.getTabAt(i).getCustomView();
-                   ImageView icon = (ImageView) view.findViewById(R.id.tab_content_image);
-                   TextView text = (TextView) view.findViewById(R.id.tab_content_text);
-                   if(i == tab.getPosition()){
-                       icon.setImageResource(DataGenerator.mTabResPressed[i]);
-                       text.setTextColor(getResources().getColor(android.R.color.black));
-                   }else{
-                       icon.setImageResource(DataGenerator.mTabRes[i]);
-                       text.setTextColor(getResources().getColor(android.R.color.darker_gray));
-                   }
-               }
-
-
+                for (int i = 0; i < mTabLayout.getTabCount(); i++) {
+                    View view = mTabLayout.getTabAt(i).getCustomView();
+                    ImageView icon = (ImageView) view.findViewById(R.id.tab_content_image);
+                    TextView text = (TextView) view.findViewById(R.id.tab_content_text);
+                    if (i == tab.getPosition()) {
+                        icon.setImageResource(DataGenerator.mTabResPressed[i]);
+                        text.setTextColor(getResources().getColor(android.R.color.black));
+                    } else {
+                        icon.setImageResource(DataGenerator.mTabRes[i]);
+                        text.setTextColor(getResources().getColor(android.R.color.darker_gray));
+                    }
+                }
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
-
-            for(int i=0;i<4;i++){
-             mTabLayout.addTab(mTabLayout.newTab().setCustomView(DataGenerator.getTabView(this,i)));
-         }
-
+        for (int i = 0; i < 4; i++) {
+            mTabLayout.addTab(mTabLayout.newTab().setCustomView(DataGenerator.getTabView(this, i)));
+        }
     }
 
-    private void onTabItemSelected(int position){
+    private void onTabItemSelected(int position) {
         Fragment fragment = null;
-        switch (position){
+        switch (position) {
             case 0:
                 fragment = mFragmensts[0];
                 break;
@@ -86,8 +79,8 @@ public class BottomTabLayoutActivity extends AppCompatActivity {
                 fragment = mFragmensts[3];
                 break;
         }
-        if(fragment!=null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.home_container,fragment).commit();
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.home_container, fragment).commit();
         }
     }
 }

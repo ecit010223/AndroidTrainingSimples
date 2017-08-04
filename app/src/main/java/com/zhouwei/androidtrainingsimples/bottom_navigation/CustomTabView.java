@@ -22,7 +22,7 @@ import java.util.List;
  * Created by zhouwei on 17/4/25.
  */
 
-public class CustomTabView extends LinearLayout implements View.OnClickListener{
+public class CustomTabView extends LinearLayout implements View.OnClickListener {
     private List<View> mTabViews;
     private List<Tab> mTabs;
     private OnTabCheckListener mOnTabCheckListener;
@@ -52,20 +52,20 @@ public class CustomTabView extends LinearLayout implements View.OnClickListener{
         init();
     }
 
-    private void init(){
+    private void init() {
         setOrientation(HORIZONTAL);
         setGravity(Gravity.CENTER);
         mTabViews = new ArrayList<>();
         mTabs = new ArrayList<>();
-
     }
 
     /**
      * 添加Tab
+     *
      * @param tab
      */
-    public void addTab(Tab tab){
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.custom_tab_item_layout,null);
+    public void addTab(Tab tab) {
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.custom_tab_item_layout, null);
         TextView textView = (TextView) view.findViewById(R.id.custom_tab_text);
         ImageView imageView = (ImageView) view.findViewById(R.id.custom_tab_icon);
         imageView.setImageResource(tab.mIconNormalResId);
@@ -79,38 +79,36 @@ public class CustomTabView extends LinearLayout implements View.OnClickListener{
         mTabs.add(tab);
 
         addView(view);
-
     }
 
     /**
      * 设置选中Tab
+     *
      * @param position
      */
-    public void setCurrentItem(int position){
-        if(position>=mTabs.size() || position<0){
+    public void setCurrentItem(int position) {
+        if (position >= mTabs.size() || position < 0) {
             position = 0;
         }
-
-         mTabViews.get(position).performClick();
+        mTabViews.get(position).performClick();
 
         updateState(position);
-
-
     }
 
     /**
      * 更新状态
+     *
      * @param position
      */
-    private void updateState(int position){
-        for(int i= 0;i<mTabViews.size();i++){
+    private void updateState(int position) {
+        for (int i = 0; i < mTabViews.size(); i++) {
             View view = mTabViews.get(i);
             TextView textView = (TextView) view.findViewById(R.id.custom_tab_text);
             ImageView imageView = (ImageView) view.findViewById(R.id.custom_tab_icon);
-            if(i == position){
+            if (i == position) {
                 imageView.setImageResource(mTabs.get(i).mIconPressedResId);
                 textView.setTextColor(mTabs.get(i).mSelectColor);
-            }else{
+            } else {
                 imageView.setImageResource(mTabs.get(i).mIconNormalResId);
                 textView.setTextColor(mTabs.get(i).mNormalColor);
             }
@@ -121,47 +119,45 @@ public class CustomTabView extends LinearLayout implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         int position = (int) v.getTag();
-        if(mOnTabCheckListener!=null){
+        if (mOnTabCheckListener != null) {
             mOnTabCheckListener.onTabSelected(v, position);
         }
-
         updateState(position);
     }
 
-    public interface  OnTabCheckListener{
-        public void onTabSelected(View v,int position);
+    public interface OnTabCheckListener {
+        void onTabSelected(View v, int position);
     }
 
 
-    public static class Tab{
+    public static class Tab {
         private int mIconNormalResId;
         private int mIconPressedResId;
         private int mNormalColor;
         private int mSelectColor;
         private String mText;
 
-
-        public Tab setText(String text){
+        public Tab setText(String text) {
             mText = text;
             return this;
         }
 
-        public Tab setNormalIcon(int res){
+        public Tab setNormalIcon(int res) {
             mIconNormalResId = res;
             return this;
         }
 
-        public Tab setPressedIcon(int res){
+        public Tab setPressedIcon(int res) {
             mIconPressedResId = res;
             return this;
         }
 
-        public Tab setColor(int color){
+        public Tab setColor(int color) {
             mNormalColor = color;
             return this;
         }
 
-        public Tab setCheckedColor(int color){
+        public Tab setCheckedColor(int color) {
             mSelectColor = color;
             return this;
         }
@@ -170,10 +166,10 @@ public class CustomTabView extends LinearLayout implements View.OnClickListener{
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        if(mTabViews!=null){
+        if (mTabViews != null) {
             mTabViews.clear();
         }
-        if(mTabs!=null){
+        if (mTabs != null) {
             mTabs.clear();
         }
     }
@@ -181,13 +177,12 @@ public class CustomTabView extends LinearLayout implements View.OnClickListener{
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        for(int i=0;i<mTabViews.size();i++){
+        for (int i = 0; i < mTabViews.size(); i++) {
             View view = mTabViews.get(i);
             int width = getResources().getDisplayMetrics().widthPixels / (mTabs.size());
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width, ViewGroup.LayoutParams.MATCH_PARENT);
 
             view.setLayoutParams(params);
         }
-
     }
 }

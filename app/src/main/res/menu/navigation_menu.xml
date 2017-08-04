@@ -3,22 +3,18 @@
     <item
         android:id="@+id/tab_menu_home"
         android:icon="@drawable/ic_play_circle_outline_black_24dp"
-        android:title="首页"
-        />
+        android:title="首页"/>
     <item
         android:id="@+id/tab_menu_discovery"
         android:icon="@drawable/ic_favorite_border_black_24dp"
-        android:title="发现"
-        />
+        android:title="发现"/>
     <item
         android:id="@+id/tab_menu_attention"
         android:icon="@drawable/ic_insert_photo_black_24dp"
-        android:title="关注"
-        />
+        android:title="关注"/>
     <item
         android:id="@+id/tab_menu_profile"
         android:icon="@drawable/ic_clear_all_black_24dp"
-        android:title="我的"
-        />
+        android:title="我的"/>
 
 </menu>

@@ -19,6 +19,5 @@ public class FlexLayoutManagerSimpleActivity extends AppCompatActivity {
         FlexManagerFragment flexManagerFragment = new FlexManagerFragment();
 
         getSupportFragmentManager().beginTransaction().add(R.id.activity_main,flexManagerFragment).commit();
-
     }
 }

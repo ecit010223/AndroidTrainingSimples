@@ -16,10 +16,11 @@ import com.zhouwei.androidtrainingsimples.R;
 
 public class HomeFragment extends Fragment {
     private String mFrom;
-    static HomeFragment newInstance(String from){
+
+    static HomeFragment newInstance(String from) {
         HomeFragment fragment = new HomeFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("from",from);
+        bundle.putString("from", from);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -27,7 +28,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getArguments()!=null){
+        if (getArguments() != null) {
             mFrom = getArguments().getString("from");
         }
     }
@@ -35,7 +36,7 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.home_fragment_layout,null);
+        View view = inflater.inflate(R.layout.home_fragment_layout, null);
         TextView textView = (TextView) view.findViewById(R.id.title_from);
         TextView content = (TextView) view.findViewById(R.id.fragment_content);
         textView.setText(mFrom);

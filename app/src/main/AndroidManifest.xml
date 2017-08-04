@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.zhouwei.androidtrainingsimples">
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
@@ -24,12 +25,12 @@
 
         <activity android:name=".snap_helper.SnapHelperSimpleActivity"/>
 
-        <activity android:name=".layout_animation.LayoutAnimationActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar"
-            />
-        <activity android:name=".view.CustomViewActivity"
-                  android:theme="@style/Theme.Design.Light.NoActionBar"
-            />
+        <activity
+            android:name=".layout_animation.LayoutAnimationActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar"/>
+        <activity
+            android:name=".view.CustomViewActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar"/>
         <activity android:name=".bottom_navigation.FragmentTabHostActivity"/>
         <activity android:name=".bottom_navigation.BottomTabLayoutActivity"/>
         <activity android:name=".bottom_navigation.BottomNavigationViewActivity"/>
@@ -37,13 +38,13 @@
         <activity android:name=".bottom_navigation.RadioGroupTabActivity"/>
         <activity android:name=".bottom_navigation.CustomTabActivity"/>
         <activity android:name=".service.ServiceSimpleActivity"/>
-        <activity android:name=".viewpager_transform.ViewPagerActivity"
-                  android:theme="@style/Theme.Design.Light.NoActionBar"
-            />
-        <!-- -->
-        <service android:name=".service.SimpleService"
-                 android:exported="false"
-            />
+        <activity
+            android:name=".viewpager_transform.ViewPagerActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar"/>
+
+        <service
+            android:name=".service.SimpleService"
+            android:exported="false"/>
         <service android:name=".service.DownloadService"/>
         <service android:name=".service.MusicService"/>
         <service android:name=".service.MyIntentService"/>

@@ -12,7 +12,7 @@ import com.zhouwei.androidtrainingsimples.R;
  * Created by zhouwei on 17/4/24.
  */
 
-public class BottomNavigationBestPracticeActivity extends AppCompatActivity implements View.OnClickListener{
+public class BottomNavigationBestPracticeActivity extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,24 +28,24 @@ public class BottomNavigationBestPracticeActivity extends AppCompatActivity impl
     @Override
     public void onClick(View v) {
         Intent intent = null;
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tab_Layout_tab:
-                intent = new Intent(this,BottomTabLayoutActivity.class);
+                intent = new Intent(this, BottomTabLayoutActivity.class);
                 break;
             case R.id.tab_bottom_navigation_view:
-                intent = new Intent(this,BottomNavigationViewActivity.class);
+                intent = new Intent(this, BottomNavigationViewActivity.class);
                 break;
             case R.id.tab_fragment_tab_host:
-                intent = new Intent(this,FragmentTabHostActivity.class);
+                intent = new Intent(this, FragmentTabHostActivity.class);
                 break;
             case R.id.tab_radio_group:
-                intent = new Intent(this,RadioGroupTabActivity.class);
+                intent = new Intent(this, RadioGroupTabActivity.class);
                 break;
             case R.id.tab_custom_view:
-                intent = new Intent(this,CustomTabActivity.class);
+                intent = new Intent(this, CustomTabActivity.class);
                 break;
         }
-        if(intent!=null){
+        if (intent != null) {
             startActivity(intent);
         }
 

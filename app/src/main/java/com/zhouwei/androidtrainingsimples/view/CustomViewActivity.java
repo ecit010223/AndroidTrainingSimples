@@ -21,6 +21,7 @@ import java.util.Calendar;
 
 public class CustomViewActivity extends AppCompatActivity {
     private Toolbar mToolbar;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,7 @@ public class CustomViewActivity extends AppCompatActivity {
         mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                 // todo
+                // todo
                 //showTimeDilog();
                 showDialog();
                 return true;
@@ -48,14 +49,14 @@ public class CustomViewActivity extends AppCompatActivity {
         });
     }
 
-    private void showTimeDilog(){
+    private void showTimeDilog() {
         Calendar calendar = Calendar.getInstance();
-        final TimePickerDialog timePickerDialog = new TimePickerDialog(this, R.style.Theme_AppCompat_Light_Dialog,new TimePickerDialog.OnTimeSetListener() {
+        final TimePickerDialog timePickerDialog = new TimePickerDialog(this, R.style.Theme_AppCompat_Light_Dialog, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
             }
-        },calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),true);
+        }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
         timePickerDialog.setTitle("选择时间");
         timePickerDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
@@ -67,7 +68,7 @@ public class CustomViewActivity extends AppCompatActivity {
         timePickerDialog.show();
     }
 
-    private void showDialog(){
+    private void showDialog() {
         AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setMessage("这是一个对话框!")
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -79,7 +80,7 @@ public class CustomViewActivity extends AppCompatActivity {
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                         dialog.dismiss();
+                        dialog.dismiss();
                     }
                 })
                 .setCancelable(false)

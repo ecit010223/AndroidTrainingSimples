@@ -16,14 +16,13 @@ import com.zhouwei.androidtrainingsimples.R;
 
 public class BottomNavigationViewActivity extends AppCompatActivity {
     private BottomNavigationView mBottomNavigationView;
-    private Fragment []mFragments;
+    private Fragment[] mFragments;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bottom_navigation_view_ac);
-
         mFragments = DataGenerator.getFragments("BottomNavigationView Tab");
-
         initView();
     }
 
@@ -40,12 +39,11 @@ public class BottomNavigationViewActivity extends AppCompatActivity {
         });
         // 由于第一次进来没有回调onNavigationItemSelected，因此需要手动调用一下切换状态的方法
         onTabItemSelected(R.id.tab_menu_home);
-
     }
 
-    private void onTabItemSelected(int id){
+    private void onTabItemSelected(int id) {
         Fragment fragment = null;
-        switch (id){
+        switch (id) {
             case R.id.tab_menu_home:
                 fragment = mFragments[0];
                 break;
@@ -60,8 +58,8 @@ public class BottomNavigationViewActivity extends AppCompatActivity {
                 fragment = mFragments[3];
                 break;
         }
-        if(fragment!=null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.home_container,fragment).commit();
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.home_container, fragment).commit();
         }
     }
 }

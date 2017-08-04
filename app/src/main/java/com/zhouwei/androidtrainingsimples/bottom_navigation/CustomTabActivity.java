@@ -13,16 +13,16 @@ import com.zhouwei.androidtrainingsimples.R;
  * Created by zhouwei on 17/4/25.
  */
 
-public class CustomTabActivity extends AppCompatActivity implements CustomTabView.OnTabCheckListener{
+public class CustomTabActivity extends AppCompatActivity implements CustomTabView.OnTabCheckListener {
     private CustomTabView mCustomTabView;
-    private Fragment []mFragmensts;
+    private Fragment[] mFragmensts;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.custom_tab_ac_layout);
         mFragmensts = DataGenerator.getFragments("CustomTabView Tab");
         initView();
-
     }
 
     private void initView() {
@@ -55,18 +55,17 @@ public class CustomTabActivity extends AppCompatActivity implements CustomTabVie
         mCustomTabView.setOnTabCheckListener(this);
 
         mCustomTabView.setCurrentItem(0);
-
     }
 
     @Override
     public void onTabSelected(View v, int position) {
-        Log.e("zhouwei","position:"+position);
+        Log.e("zhouwei", "position:" + position);
         onTabItemSelected(position);
     }
 
-    private void onTabItemSelected(int position){
+    private void onTabItemSelected(int position) {
         Fragment fragment = null;
-        switch (position){
+        switch (position) {
             case 0:
                 fragment = mFragmensts[0];
                 break;
@@ -81,8 +80,8 @@ public class CustomTabActivity extends AppCompatActivity implements CustomTabVie
                 fragment = mFragmensts[3];
                 break;
         }
-        if(fragment!=null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.home_container,fragment).commit();
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.home_container, fragment).commit();
         }
     }
 }

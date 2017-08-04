@@ -16,8 +16,9 @@ import com.zhouwei.androidtrainingsimples.R;
 
 public class RadioGroupTabActivity extends AppCompatActivity {
     private RadioGroup mRadioGroup;
-    private Fragment []mFragments;
+    private Fragment[] mFragments;
     private RadioButton mRadioButtonHome;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +32,10 @@ public class RadioGroupTabActivity extends AppCompatActivity {
         mRadioButtonHome = (RadioButton) findViewById(R.id.radio_button_home);
         mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             Fragment mFragment = null;
+
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id.radio_button_home:
                         mFragment = mFragments[0];
                         break;
@@ -47,8 +49,8 @@ public class RadioGroupTabActivity extends AppCompatActivity {
                         mFragment = mFragments[3];
                         break;
                 }
-                if(mFragments!=null){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.home_container,mFragment).commit();
+                if (mFragments != null) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.home_container, mFragment).commit();
                 }
             }
         });
